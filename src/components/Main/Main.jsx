@@ -11,7 +11,7 @@ const Main = () => {
             <Card className={classes.root}>
                 <CardHeader title = " Expense Tracker" subheader=" Powered by speechly" />
                 <CardContent>
-                    <Typography align = "center" variant='h5 '>Totel balance Rs 100</Typography>
+                    <Typography align = "center" variant='h5'>Totel balance Rs 100</Typography>
                     <Typography variant = "subtitle2" style ={{lineHeight : '1.5em' ,marginTop :'20px'}}>
                          {/* try saying:add income for Rs 100 incatogoy Salary for monday */}
                     </Typography>
