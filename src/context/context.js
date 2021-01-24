@@ -4,22 +4,24 @@ import contextReducer from './contextReducer';
 
 const initialState=[];
 
-export const ExpenseTrsckerContext = createContext(initialState);
+export const ExpenseTrackerContext = createContext(initialState);
 
-export const Provider = ( {children }) => {
+export const Provider = ( { children }) => {
     const [transactions, dispatch] = useReducer(contextReducer, initialState);
 
     //Action creators
     const deleteTransaction = (id) => dispatch({ type: 'DELETE_TRANSACTION', payload: id});
 
     const addTransaction = (transaction) => dispatch({ type: 'ADD_TRANSCACTION', payload: transaction });
+
+    console.log(transactions);
     
     return (
-        <ExpenseTrsckerContext.Provider value={{ 
+        <ExpenseTrackerContext.Provider value={{ 
             deleteTransaction,
             addTransaction
          }}>
             {children}
-        </ExpenseTrsckerContext.Provider>
+        </ExpenseTrackerContext.Provider>
     );
 }

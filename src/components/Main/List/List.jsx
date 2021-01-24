@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import{ List as MUList, ListItem, ListItemAvatar, LiatItemText, Avatar, ListItemSecondaryAction, IconButton, Slide, ListItemText} from '@material-ui/core';
+import{ List as MUList, ListItem, ListItemAvatar,  Avatar, ListItemSecondaryAction, IconButton, Slide, ListItemText} from '@material-ui/core';
 import {Delete,MoneyOff } from '@material-ui/icons';
 
-import {ExpenseTrsckerContext } from '../../../context/context';
+import {ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles'
 
 const List = () => {
     const classes = useStyles();
-    const { deleteTransaction } = useContext(ExpenseTrsckerContext);
+    const { deleteTransaction } = useContext(ExpenseTrackerContext);
 
     
 
