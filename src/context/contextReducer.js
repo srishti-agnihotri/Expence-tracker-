@@ -1,5 +1,5 @@
 //Reducre =. a functio that takes in he old state , and a action =>neww state 
-const contextReducer = (state , action) =>{
+const contextReducer = (state , action) => {
     let transactions;
 
    switch (action.type){

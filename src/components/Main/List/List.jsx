@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import{ List as MUList, ListItem, ListItemAvatar,  Avatar, ListItemSecondaryAction, IconButton, Slide, ListItemText} from '@material-ui/core';
+import{ List as MUIList, ListItem, ListItemAvatar, ListItemText, Avatar, ListItemSecondaryAction, IconButton, Slide} from '@material-ui/core';
 import {Delete,MoneyOff } from '@material-ui/icons';
 
 import {ExpenseTrackerContext } from '../../../context/context';
@@ -7,29 +7,29 @@ import useStyles from './styles'
 
 const List = () => {
     const classes = useStyles();
-    const { deleteTransaction } = useContext(ExpenseTrackerContext);
+    const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
     
 
-    const transactions = [
-        { id: 1, type :"Income", catogary: "Salary" , amount : 50, date : "Sun Jan 10" },
-        { id: 2, type :"Expense", catogary: "food" , amount : 500, date : "Sun Jan 11" },
-        { id: 3, type :"Income", catogary: "youtube" , amount : 150, date : "Sun Jan 12" }
+    // const transactions = [
+    //     { id: 1, type :"Income", catogary: "Salary" , amount : 50, date : "Sun Jan 10" },
+    //     { id: 2, type :"Expense", catogary: "food" , amount : 500, date : "Sun Jan 11" },
+    //     { id: 3, type :"Income", catogary: "youtube" , amount : 150, date : "Sun Jan 12" }
 
-    ];
+    // ];
     return (
-        <MUList dense={false} className={classes.list}>
-         {transactions.map(transactions => (
-             <Slide direction = "down" in mountOnEnter unmountOnExit key={transactions.id}>
+        <MUIList dense={false} className={classes.list}>
+         {transactions.map((transaction) => (
+             <Slide direction = "down" in mountOnEnter unmountOnExit key={transaction.id}>
                  <ListItem>
                      <ListItemAvatar>
-                         <Avatar className={transactions.type === 'Income' ? classes.avatarIncome : classes.avatarExpense}>
+                         <Avatar className={transaction.type === 'Income' ? classes.avatarIncome : classes.avatarExpense}>
                             <MoneyOff />
                          </Avatar>
                      </ListItemAvatar>
-                     <ListItemText primary = {transactions.catogary } secondary={`Rs ${transactions.amount}- ${transactions.date}`}/>
+                     <ListItemText primary = {transaction.catogary } secondary={`Rs ${transaction.amount} - ${transaction.date}`}/>
                     <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label ="delete" onClick="">
+                        <IconButton edge="end" aria-label ="delete" onClick={() => deleteTransaction(transaction.id)}>
                             <Delete />
                         </IconButton>
                     </ListItemSecondaryAction>
@@ -37,8 +37,8 @@ const List = () => {
 
              </Slide>
          ))}
-        </MUList>
-    )
+        </MUIList>
+    );
 }
 
 export default List
